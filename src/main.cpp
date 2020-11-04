@@ -32,10 +32,29 @@ int main(int argc, char* argv[]){
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	while (!glfwWindowShouldClose(window)){
-		glfwSwapBuffers(window);
+		processInput(window);
+
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
 		glfwPollEvents();
+		glfwSwapBuffers(window);
 	}
 
 	glfwTerminate();
 	return 0;
+}
+
+void versionPrint(char* argv[]){
+	std::cout << argv[0] << " Version " << Engine_Alpha_VERSION_MAJOR << "." << Engine_Alpha_VERSION_MINOR << '\n';
+}
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height){
+	glViewport(0, 0, width, height);
+}
+
+void processInput(GLFWwindow* window){
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS){
+		glfwSetWindowShouldClose(window, true);
+	}
 }
