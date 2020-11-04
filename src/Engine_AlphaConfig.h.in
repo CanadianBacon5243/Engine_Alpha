@@ -1,0 +1,2 @@
+#define Engine_Alpha_VERSION_MAJOR @Engine_Alpha_VERSION_MAJOR@
+#define Engine_Alpha_VERSION_MINOR @Engine_Alpha_VERSION_MINOR@
