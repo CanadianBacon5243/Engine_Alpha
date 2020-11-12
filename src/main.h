@@ -5,12 +5,14 @@
 #ifndef ENGINE_ALPHA_MAIN_H
 #define ENGINE_ALPHA_MAIN_H
 #include <iostream>
+#include <array>
+#include <thread>
+#include <chrono>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "Display.h"
 
 void versionPrint(char* argv[]);
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-
-void processInput(GLFWwindow* window);
+void colorChange(std::array<GLfloat, 4>*& rgba);
 #endif //ENGINE_ALPHA_MAIN_H

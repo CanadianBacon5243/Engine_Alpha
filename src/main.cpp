@@ -8,53 +8,22 @@
 int main(int argc, char* argv[]){
 	versionPrint(argv);
 
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	auto display = new Display(800, 600, "main.cpp", nullptr, nullptr);
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "main.cpp", nullptr, nullptr);
-	if (window == nullptr){
-		fprintf(stderr, "Failed to create GLFW window\n");
-		glfwTerminate();
-		return -1;
-	}
+	while (!glfwWindowShouldClose(display->getWindow())){
+		display->processInput();
 
-	glfwMakeContextCurrent(window);
-
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)){
-		fprintf(stderr, "Failed to initialize GLAD\n");
-		return -1;
-	}
-
-	glViewport(0, 0, 800, 600);
-
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
-	while (!glfwWindowShouldClose(window)){
-		processInput(window);
-
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.0f, 0.1f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glfwPollEvents();
-		glfwSwapBuffers(window);
+		glfwSwapBuffers(display->getWindow());
 	}
 
-	glfwTerminate();
+	delete display;
 	return 0;
 }
 
 void versionPrint(char* argv[]){
 	std::cout << argv[0] << " Version " << Engine_Alpha_VERSION_MAJOR << "." << Engine_Alpha_VERSION_MINOR << '\n';
-}
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height){
-	glViewport(0, 0, width, height);
-}
-
-void processInput(GLFWwindow* window){
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS){
-		glfwSetWindowShouldClose(window, true);
-	}
 }

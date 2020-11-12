@@ -10,7 +10,9 @@ configure_file(src/Engine_AlphaConfig.h.in src/Engine_AlphaConfig.h)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
-add_executable(Engine_Alpha src/main.cpp)
+add_executable(Engine_Alpha src/main.cpp
+        src/Display.cpp
+        src/Display.h src/shaders/Shader.cpp src/shaders/Shader.h)
 
 target_include_directories(
         Engine_Alpha PUBLIC
