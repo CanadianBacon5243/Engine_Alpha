@@ -3,6 +3,9 @@
 //
 
 #include "Display.h"
+#include <string>
+#include <cstdlib>
+#include <glad/glad.h>
 
 Display::Display(int width, int height, const char *title, GLFWmonitor* monitor, GLFWwindow* window) {
 	if (!glfwInit()){

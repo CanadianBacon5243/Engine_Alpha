@@ -4,11 +4,7 @@
 
 #ifndef ENGINE_ALPHA_DISPLAY_H
 #define ENGINE_ALPHA_DISPLAY_H
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "includes.h"
 
 class Display {
 public:

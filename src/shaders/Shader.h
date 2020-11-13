@@ -7,15 +7,14 @@
 
 
 #include <string>
-#include <fstream>
-#include <glad/glad.h>
+#include "../../src/includes.h"
 
 class Shader {
 public:
-	Shader(const std::string& fileName);
+	explicit Shader(const std::string& fileName);
 	virtual ~Shader();
 
-	void bind();
+	void bind() const;
 
 private:
 	static const unsigned int num_shader = 2;
@@ -27,6 +26,4 @@ private:
 	GLuint m_shaders[num_shader];
 };
 
-static std::string LoadShader(const std::string& fileName);
-static void checkShaderError(GLuint shader, GLuint flag, bool isProgram, const std::string& errorMessage);
 #endif //ENGINE_ALPHA_SHADER_H
