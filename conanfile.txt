@@ -1,6 +1,7 @@
 [requires]
 glfw/3.3.2
 glad/0.1.33
+glm/0.9.9.5
 
 [generators]
 cmake
