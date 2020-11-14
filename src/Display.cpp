@@ -5,7 +5,6 @@
 #include "Display.h"
 #include <string>
 #include <cstdlib>
-#include <glad/glad.h>
 
 Display::Display(int width, int height, const char *title, GLFWmonitor* monitor, GLFWwindow* window) {
 	if (!glfwInit()){
@@ -53,4 +52,14 @@ void Display::processInput() {
 
 Display::~Display() {
 	glfwTerminate();
+}
+
+void Display::clear(float f0, float f1, float f2, float f3) {
+	glClearColor(f0, f1, f2, f3);
+	glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void Display::update() {
+	glfwPollEvents();
+	glfwSwapBuffers(this->getWindow());
 }

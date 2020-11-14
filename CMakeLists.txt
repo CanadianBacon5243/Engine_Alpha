@@ -12,7 +12,7 @@ conan_basic_setup()
 
 add_executable(Engine_Alpha src/main.cpp
         src/Display.cpp
-        src/Display.h src/shaders/Shader.cpp src/shaders/Shader.h src/includes.h)
+        src/Display.h src/shader/Shader.cpp src/shader/Shader.h src/includes.h src/mesh/Mesh.cpp src/mesh/Mesh.h src/mesh/Vertex.cpp src/mesh/Vertex.h)
 
 target_include_directories(
         Engine_Alpha PUBLIC

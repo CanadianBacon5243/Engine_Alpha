@@ -12,6 +12,8 @@ public:
 	virtual ~Display();
 	GLFWwindow* getWindow();
 	void processInput();
+	static void clear(float f0, float f1, float f2, float f3);
+	void update();
 
 private:
 	GLFWwindow* d_Window;

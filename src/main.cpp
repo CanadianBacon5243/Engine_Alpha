@@ -2,7 +2,8 @@
 // Created by buddm on 11/3/2020.
 //
 #include <iostream>
-#include "shaders/Shader.h"
+#include "shader/Shader.h"
+#include "mesh/Mesh.h"
 #include "Display.h"
 #include "src/Engine_AlphaConfig.h"
 #include "main.h"
@@ -14,18 +15,24 @@ int main([[maybe_unused]] int argc, char* argv[]){
 
 	Display display(800, 600, "main.cpp", nullptr, nullptr);
 
-	Shader shader(R"(C:\Users\buddm\Documents\GitHub\Engine_Alpha\src\shaders\basicShader)");
+	Shader shader("../../src/shader/basicShader");
+
+	Vertex vertices[] = {
+			Vertex(glm::vec3(-0.5, -0.5, 0)),
+			Vertex(glm::vec3(0, 0.5, 0)),
+			Vertex(glm::vec3(0.5, -0.5, 0))
+	};
+
+	Mesh mesh(vertices, sizeof(vertices)/sizeof(vertices[0]));
 
 	while (!glfwWindowShouldClose(display.getWindow())){
 		display.processInput();
-
-		glClearColor(0.0f, 0.1f, 0.2f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		Display::clear(0.0f, 0.15f, 0.3f, 1.0f);
 
 		shader.bind();
+		mesh.draw();
 
-		glfwPollEvents();
-		glfwSwapBuffers(display.getWindow());
+		display.update();
 	}
 
 	return 0;
